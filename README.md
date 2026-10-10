@@ -1,149 +1,65 @@
-# Detecting-Phishing-Attacks-Using-Machine-Learning-and-NLP
-This project presents a machine learning–based system designed to detect phishing emails using Natural Language Processing (NLP) techniques and text classification models. The system analyzes email content and accurately classifies it as phishing or legitimate, helping to protect users from cyber threats.
+# Detecting Phishing Attacks Using Machine Learning and NLP
 
-![Python](https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python)
-![Machine Learning](https://img.shields.io/badge/Machine%20Learning-NLP-green?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge)
+A text classification project that reads the content of an email and labels it as phishing or legitimate. It covers the whole process: cleaning the raw text, turning it into features, training several classifiers, and comparing them.
 
----
+## Approach
 
-## 📌 Project Overview
+```
+Raw email data
+      ↓
+Preprocessing        remove HTML and special characters, tokenize, drop stop words
+      ↓
+Feature engineering  n-grams and TF-IDF vectors
+      ↓
+Model training       Naive Bayes, Logistic Regression, Random Forest, SVM
+      ↓
+Evaluation           precision, recall, F1-score, confusion matrix
+```
 
-This project presents a machine learning–based system designed to detect phishing emails using Natural Language Processing (NLP) techniques and text classification models. The system analyzes email content and accurately classifies it as **phishing** or **legitimate**, helping to protect users from cyber threats.
+**Preprocessing.** Raw emails are noisy. I strip HTML tags and special characters, split the text into tokens, and remove stop words so the models see the words that carry meaning.
 
----
+**Feature engineering.** The cleaned text is converted to numbers with TF-IDF, which gives more weight to words that are frequent in one email but rare across the dataset. N-grams keep short word sequences together, which matters for phrases that are typical of phishing.
 
-## 🎯 Objectives
+**Models.** I trained four classifiers on the same features so they can be compared fairly: Naive Bayes, Logistic Regression, Random Forest and a Support Vector Machine.
 
-- Build an automated system to identify phishing emails
-- Apply NLP preprocessing techniques for feature extraction
-- Train and evaluate multiple ML classification models
-- Compare model performance to identify the most effective approach
+**Evaluation.** For phishing, the two kinds of mistake are not equal. A missed phishing email (low recall) is more harmful than a legitimate email flagged by mistake (low precision), so I report both along with F1 instead of relying on accuracy alone.
 
----
+## Results
 
-## 🛠️ Tech Stack
+<!-- TODO: replace each "to be added" with your real scores, then delete this comment. -->
 
-| Category | Tools / Libraries |
+| Model | Precision | Recall | F1-score |
+|---|---:|---:|---:|
+| Naive Bayes | to be added | to be added | to be added |
+| Logistic Regression | to be added | to be added | to be added |
+| Random Forest | to be added | to be added | to be added |
+| SVM | to be added | to be added | to be added |
+
+## Tech stack
+
+| | |
 |---|---|
 | Language | Python |
-| NLP | NLTK, Scikit-learn |
-| ML Models | Naive Bayes, Logistic Regression, Random Forest, SVM |
-| Feature Engineering | TF-IDF, N-grams, Tokenization |
-| Evaluation | Precision, Recall, F1-Score, Confusion Matrix |
-| Environment | Jupyter Notebook / VS Code |
+| Libraries | scikit-learn, NLTK, pandas |
+| Environment | Jupyter Notebook |
 
----
+## Running it
 
-## 🔄 Project Workflow
+<!-- TODO: after uploading your code, replace NOTEBOOK_NAME with your notebook's file name, then delete this comment. -->
 
-```
-Raw Email Data
-      ↓
-Data Preprocessing
-(Tokenization, Stop-word Removal, N-grams)
-      ↓
-Feature Engineering
-(TF-IDF Vectorization)
-      ↓
-Model Training
-(Naive Bayes, Logistic Regression, Random Forest, SVM)
-      ↓
-Model Evaluation
-(Precision, Recall, F1-Score)
-      ↓
-Results & Analysis
-```
-
----
-
-## ⚙️ Key Steps
-
-### 1. Data Preprocessing
-- Cleaned raw email text by removing HTML tags, special characters, and stopwords
-- Applied **tokenization** to break text into meaningful units
-- Used **n-gram analysis** to capture word sequences and context
-
-### 2. Feature Engineering
-- Applied **TF-IDF (Term Frequency–Inverse Document Frequency)** to convert text into numerical features
-- Extracted key features that distinguish phishing emails from legitimate ones
-
-### 3. Model Training
-Trained and compared the following classification models:
-- Naive Bayes
-- Logistic Regression
-- Random Forest
-- Support Vector Machine (SVM)
-
-### 4. Model Evaluation
-Evaluated each model using:
-- **Precision** – How many predicted phishing emails were actually phishing
-- **Recall** – How many actual phishing emails were correctly identified
-- **F1-Score** – Harmonic mean of precision and recall
-
----
-
-## 📊 Results
-
-| Model | Precision | Recall | F1-Score |
-|---|---|---|---|
-| Naive Bayes | - | - | - |
-| Logistic Regression | - | - | - |
-| Random Forest | - | - | - |
-| SVM | - | - | - |
-
-
-
- 📁 Project Structure
-
-📦 phishing-detection-ml-nlp
- ┣ 📂 data/
- ┃ ┗ 📄 emails.csv
- ┣ 📂 notebooks/
- ┃ ┗ 📄 phishing_detection.ipynb
- ┣ 📂 models/
- ┃ ┗ 📄 trained_model.pkl
- ┣ 📂 src/
- ┃ ┣ 📄 preprocessing.py
- ┃ ┣ 📄 feature_engineering.py
- ┃ ┗ 📄 model_training.py
- ┣ 📄 requirements.txt
- ┗ 📄 README.md
-```
-
----
- 🚀 How to Run
-
-bash
-# 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/phishing-detection-ml-nlp.git
-
-# 2. Navigate to the project folder
-cd phishing-detection-ml-nlp
-
-# 3. Install required libraries
+```bash
+git clone https://github.com/Divyasree-g/Detecting-Phishing-Attacks-Using-Machine-Learning-and-NLP.git
+cd Detecting-Phishing-Attacks-Using-Machine-Learning-and-NLP
 pip install -r requirements.txt
-
-# 4. Run the notebook
-jupyter notebook notebooks/phishing_detection.ipynb
+jupyter notebook NOTEBOOK_NAME.ipynb
 ```
 
-📚 Key Learnings
+## What I learned
 
-- End-to-end ML pipeline from raw data to model evaluation
-- Importance of text preprocessing in NLP tasks
-- Comparative analysis of multiple classification algorithms
-- Handling class imbalance in security-related datasets
+- How much the preprocessing choices affect the result in a text classification task
+- How to compare several classifiers on the same features instead of trusting one model
+- Why precision and recall need to be read separately in a security problem
 
-👩‍💻 Author
+## Author
 
-**Divyasree Guttha**  
-M.S. Information Systems — University of Maryland, Baltimore County (UMBC)  
-📧 gutthadivyasree2003@gmail.com  
-🔗 [LinkedIn](https://www.linkedin.com/in/divyasree-guttha)
-
----
-
-📄 License
-
-This project is for academic purposes only.
+Divyasree Guttha, M.S. Information Systems, UMBC · [LinkedIn](https://www.linkedin.com/in/divyasree-guttha)
